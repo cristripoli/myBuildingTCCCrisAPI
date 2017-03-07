@@ -1,0 +1,24 @@
+{
+  "name": "mybuilding",
+  "version": "1.0.0",
+  "description": "MyBuilding restful API.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristripoli/myBuildingTCCCrisAPI.git"
+  },
+  "keywords": [
+    "building"
+  ],
+  "author": "Crislaine Tripoli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cristripoli/myBuildingTCCCrisAPI/issues"
+  },
+  "homepage": "https://github.com/cristripoli/myBuildingTCCCrisAPI#readme"
+}
