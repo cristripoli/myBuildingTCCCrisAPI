@@ -33,6 +33,24 @@ var item = {
     });
   },
 
+  getItemsByCategory: function(req, res) {
+    connection.query('SELECT * from item where id_category = ' + req.params.id, function(err, rows, fields) {
+        if (!err) {
+            if (rows.length > 0) {
+                console.log('GET items by category ID OK');           
+                res.json(rows);
+            }
+            else{
+                console.log('This item does not exists!');
+                res.status(404).send('This item does not exists!');
+            }
+        }else{
+            console.log(err);
+            res.status(404).send('Not found!');
+        }
+    });
+  },
+
   create: function(req, res) {
     connection.query('INSERT INTO item SET ?',req.body, function(err, rows, fields) {
         if (!err) {

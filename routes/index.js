@@ -42,6 +42,7 @@ router.delete('/api/category/:id', category.delete);
 
 router.get('/api/item', item.getAll);
 router.get('/api/item/:id', item.getOne);
+router.get('/api/getItemsByCategory/:id', item.getItemsByCategory);
 router.post('/api/item/', item.create);
 router.put('/api/item/:id', item.update);
 router.delete('/api/item/:id', item.delete);
