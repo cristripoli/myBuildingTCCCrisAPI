@@ -50,6 +50,7 @@ router.delete('/api/item/:id', item.delete);
 router.get('/api/entry', entry.getAll);
 router.get('/api/entry/:id', entry.getOne);
 router.get('/api/entryByCategory/:id', entry.getEntriesByCategory);
+router.get('/api/entryByItem/:id', entry.getEntriesByItem);
 router.post('/api/entry/', entry.create);
 router.put('/api/entry/:id', entry.update);
 router.delete('/api/entry/:id', entry.delete);
