@@ -34,7 +34,7 @@ var entry = {
   },
 
 getEntriesByCategory: function(req, res) {
-    var query = 'SELECT entry.id, entry.description, entry.date, entry.value, entry.id_item ' +
+    var query = 'SELECT entry.id, entry.description, entry.date, entry.value, entry.paid, entry.quantity, entry.id_item ' +
                 'FROM category ' +
                 'INNER JOIN item ' +
                 'INNER JOIN entry ' +
@@ -58,8 +58,29 @@ getEntriesByCategory: function(req, res) {
     });
   },
 
+  getEntriesByMonth: function(req, res) {
+    var query = 'SELECT entry.id, entry.description, entry.date, entry.value, entry.paid, entry.quantity, entry.id_item ' +
+                'FROM entry ' +
+                'WHERE MONTH(entry.date) = ';
+    connection.query(query + req.params.month, function(err, rows, fields) {
+        if (!err) {
+            if (rows.length > 0) {
+                console.log('GET entries by month ID OK');           
+                res.json(rows);
+            }
+            else{
+                console.log('This entry does not exists!');
+                res.status(404).send('This entry does not exists!');
+            }
+        }else{
+            console.log(err);
+            res.status(404).send('Not found!');
+        }
+    });
+  },
+
   getEntriesByItem: function(req, res) {
-    var query = 'SELECT entry.id, entry.description, entry.date, entry.value, entry.id_item ' +
+    var query = 'SELECT entry.id, entry.description, entry.date, entry.value, entry.paid, entry.quantity, entry.id_item ' +
                 'FROM item ' +
                 'INNER JOIN entry ' +
                     'ON item.id = entry.id_item ' +
