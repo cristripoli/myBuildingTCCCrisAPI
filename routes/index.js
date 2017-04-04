@@ -8,6 +8,9 @@ var credential = require('./credential.js');
 var item = require('./item.js');
 var user = require('./user.js');
 var entry = require('./entry.js');
+var store = require('./store.js');
+var city = require('./city.js');
+var state = require('./state.js');
 var connection = require('../config/connectionDB.js');
 
 router.get('/api/credential', credential.getAll);
@@ -55,5 +58,24 @@ router.get('/api/entryByMonth/:month', entry.getEntriesByMonth);
 router.post('/api/entry/', entry.create);
 router.put('/api/entry/:id', entry.update);
 router.delete('/api/entry/:id', entry.delete);
+
+router.get('/api/store', store.getAll);
+router.get('/api/store/:id', store.getOne);
+router.post('/api/store/', store.create);
+router.put('/api/store/:id', store.update);
+router.delete('/api/store/:id', store.delete);
+
+router.get('/api/city', city.getAll);
+router.get('/api/city/:id', city.getOne);
+router.get('/api/cityByState/:id', city.getCitiesByState);
+router.post('/api/city/', city.create);
+router.put('/api/city/:id', city.update);
+router.delete('/api/city/:id', city.delete);
+
+router.get('/api/state', state.getAll);
+router.get('/api/state/:id', state.getOne);
+router.post('/api/state/', state.create);
+router.put('/api/state/:id', state.update);
+router.delete('/api/state/:id', state.delete);
 
 module.exports = router;
