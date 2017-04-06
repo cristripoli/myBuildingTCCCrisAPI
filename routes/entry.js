@@ -34,7 +34,7 @@ var entry = {
   },
 
 getEntriesByCategory: function(req, res) {
-    var query = 'SELECT entry.id, entry.description, entry.date, entry.value, entry.paid, entry.quantity, entry.id_item ' +
+    var query = 'SELECT * ' +
                 'FROM category ' +
                 'INNER JOIN item ' +
                 'INNER JOIN entry ' +
@@ -59,7 +59,7 @@ getEntriesByCategory: function(req, res) {
   },
 
   getEntriesByMonth: function(req, res) {
-    var query = 'SELECT entry.id, entry.description, entry.date, entry.value, entry.paid, entry.quantity, entry.id_item ' +
+    var query = 'SELECT * ' +
                 'FROM entry ' +
                 'WHERE MONTH(entry.date) = ';
     connection.query(query + req.params.month, function(err, rows, fields) {
@@ -80,7 +80,7 @@ getEntriesByCategory: function(req, res) {
   },
 
   getEntriesByItem: function(req, res) {
-    var query = 'SELECT entry.id, entry.description, entry.date, entry.value, entry.paid, entry.quantity, entry.id_item ' +
+    var query = 'SELECT * ' +
                 'FROM item ' +
                 'INNER JOIN entry ' +
                     'ON item.id = entry.id_item ' +
