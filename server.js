@@ -7,6 +7,7 @@ var app = express();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
+app.use(express.static('apidoc'));
 
 app.all('/api/*', function(req, res, next) {
   // CORS headers
@@ -28,7 +29,6 @@ app.all('/api/*', function(req, res, next) {
 //app.all('/api/*', [require('./middlewares/validateRequest')]);
 
 app.use('/', routes);
-
 app.use(bodyParser.json());
 app.use(express.static('public'));
 

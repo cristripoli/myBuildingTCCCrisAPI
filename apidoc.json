@@ -1,0 +1,7 @@
+{ 
+    "name": "MyBuilding API", 
+    "version": "1.0.0", 
+    "description": "MyBuilding", 
+    "title": "MyBuilding API", 
+    "url" : "http://localhost:3080/api" 
+}
