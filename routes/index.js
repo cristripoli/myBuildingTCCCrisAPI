@@ -614,7 +614,7 @@ router.post('/api/state/', state.create);
 router.put('/api/state/:id', state.update);
 
 /**
- * @api {delete} /state/:id deleteState
+ * @api {delete} /state/:id deleteState 
  * @apiName deleteState
  * @apiGroup State
  * @apiParam {Number} id State unique ID.
