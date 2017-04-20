@@ -28,6 +28,7 @@ CREATE TABLE `building` (
   `description` varchar(150) NOT NULL,
   `id_user` int(11) DEFAULT NULL,
   `estimated_value` decimal(10,0) NOT NULL,
+  `metreage` decimal(4,0) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `building_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
@@ -40,7 +41,7 @@ CREATE TABLE `building` (
 
 LOCK TABLES `building` WRITE;
 /*!40000 ALTER TABLE `building` DISABLE KEYS */;
-INSERT INTO `building` VALUES (1,'Minha Obra','Minha Obra',1,100000);
+INSERT INTO `building` VALUES (1,'Minha Obra','Minha Obra',1,100000,70);
 /*!40000 ALTER TABLE `building` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +87,7 @@ CREATE TABLE `category` (
   `description` varchar(200) NOT NULL,
   `icon` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +96,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Materiais','Materiais como cimento, tijolos, ferragens, acabamento, etc','construct'),(3,'Mão de Obra','Mão de Obra','pricetags');
+INSERT INTO `category` VALUES (1,'Materiais','Materiais como cimento, tijolos, ferragens, acabamento, etc','construct'),(3,'Mão de Obra','Mão de Obra e Serviços','pricetags'),(4,'Documentação','Gastos Burocráticos','copy'),(5,'Outros','Outros','medical');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,7 +173,7 @@ CREATE TABLE `entry` (
   KEY `pk_store_idx` (`store_id`),
   CONSTRAINT `entry_ibfk_1` FOREIGN KEY (`id_item`) REFERENCES `item` (`id`),
   CONSTRAINT `pk_store` FOREIGN KEY (`store_id`) REFERENCES `store` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +182,7 @@ CREATE TABLE `entry` (
 
 LOCK TABLES `entry` WRITE;
 /*!40000 ALTER TABLE `entry` DISABLE KEYS */;
-INSERT INTO `entry` VALUES (1,'Casa do construtor','2017-03-09 00:00:00',21,1,1,1,1),(4,'Pedreiro João','2017-03-09 00:00:00',1000,2,1,1,2),(5,'Tijolo Baiano do João','2017-03-09 00:00:00',1200,3,1,1,3),(6,'Casa do construtor 2','2017-03-09 00:00:00',21,1,1,1,4),(7,'sfdasgd','2017-01-01 00:00:00',12,3,1,1,1),(8,'sfdasgd','2017-01-01 00:00:00',12,3,1,1,2),(9,'gsdgas','2017-01-01 00:00:00',12,3,0,1,3),(10,'aaaaa','2017-01-01 00:00:00',12,2,0,1,4),(11,'Pedreiro 1','2017-01-01 00:00:00',12,2,0,1,1),(12,'Pedreiro3','2017-01-01 00:00:00',1000,2,0,1,2),(13,'Pedreiro 3','2017-01-01 00:00:00',1000,2,0,1,3),(14,'Pedreio','2017-01-01 00:00:00',1000,2,0,1,3),(15,'Tijolo do joão','2017-01-01 00:00:00',1000,3,0,1,4),(16,'Areia fina','2017-01-01 00:00:00',120,5,1,1,1),(17,'Pedreiro','2017-01-01 00:00:00',1000,2,1,1,2),(18,'Tijolo','2017-01-01 00:00:00',1000,3,1,1,3),(19,'dfsg','2017-01-01 00:00:00',123,4,1,1,4),(20,'eeeeeeee','2017-01-01 00:00:00',34,1,1,1,1),(21,'Prego pequeno','2017-01-01 00:00:00',10,1,1,2,1),(22,'Ferragem','2017-01-01 00:00:00',500,6,1,1,2),(23,'prego pqno','2017-01-01 00:00:00',10,8,1,1,2),(24,'fsdfa','2017-01-01 00:00:00',34,13,1,1,3),(25,'esfa','2017-01-01 00:00:00',200,1,1,1,3),(26,'fdg','2017-02-02 00:00:00',45,3,1,3,3),(27,'aiaiai','2017-01-01 00:00:00',23,1,1,1,4);
+INSERT INTO `entry` VALUES (1,'Cimento Campeão CP2','2017-03-09 00:00:00',21,1,1,5,1),(4,'Pedreiro João','2017-03-09 00:00:00',1000,2,1,1,2),(5,'Tijolo Baiano do João','2017-03-09 00:00:00',1200,3,1,1,3),(6,'Cimento Liz CP4','2017-03-09 00:00:00',19,1,1,4,4),(7,'sfdasgd','2017-01-01 00:00:00',12,22,1,1,1),(8,'sfdasgd','2017-01-01 00:00:00',12,22,1,1,2),(9,'gsdgas','2017-01-01 00:00:00',12,22,0,1,3),(10,'aaaaa','2017-01-01 00:00:00',12,22,0,1,4),(11,'Pedreiro 1','2017-01-01 00:00:00',12,2,0,1,1),(12,'Pedreiro3','2017-03-01 00:00:00',1000,2,0,1,2),(13,'Pedreiro 3','2017-02-01 00:00:00',1000,2,0,1,3),(14,'Pedreio','2017-04-01 00:00:00',1000,2,0,1,3),(15,'Tijolo do joão','2017-01-01 00:00:00',1000,3,0,1,4),(16,'Areia fina','2017-03-01 00:00:00',120,5,1,1,1),(17,'Pedreiro','2017-04-01 00:00:00',1000,2,1,1,2),(18,'Tijolo','2017-03-01 00:00:00',1000,3,1,1,3),(19,'dfsg','2017-02-01 00:00:00',123,22,1,1,4),(20,'eeeeeeee','2017-01-01 00:00:00',34,18,1,1,1),(21,'Cimento Campeão CP2','2017-04-01 00:00:00',22,1,1,4,2),(22,'Ferragem','2017-02-01 00:00:00',500,6,1,1,2),(23,'prego pqno','2017-02-01 00:00:00',10,8,1,1,2),(24,'fsdfa','2017-01-01 00:00:00',34,18,1,1,3),(25,'esfa','2017-01-01 00:00:00',200,18,1,1,3),(26,'fdg','2017-02-02 00:00:00',45,18,1,3,3),(27,'aiaiai','2017-01-01 00:00:00',23,18,1,1,4),(28,'dsfsfdsa','2017-01-01 00:00:00',34,18,1,1,4),(29,'Cimento Tupi CP2','2017-04-17 00:00:00',20,1,1,5,5);
 /*!40000 ALTER TABLE `entry` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,7 +201,7 @@ CREATE TABLE `item` (
   PRIMARY KEY (`id`),
   KEY `id_category` (`id_category`),
   CONSTRAINT `item_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,7 +210,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (1,'Cimento','Saco de cimento CP2 40kg',1),(2,'Pedreiro','Pedreiro',3),(3,'Tijolo Baiano','Milheiro',1),(4,'Pedra ','Brita Fina',1),(5,'Areia','Areia',1),(6,'Ferragem','Ferragem',1),(7,'Terra','Terra',1),(8,'Prego','Prego',1),(9,'Cano','Cano',1),(10,'Fio','Fio',1),(11,'Revestimento','Revestimento cozinha',1),(12,'Piso','Piso',1),(13,'dfas','sdf',1),(14,'dfas','sdf',1),(15,'dsrfasg','sadgsdg',1),(16,'cri','cri',1),(17,'fff','ffff',1),(18,'aaaa','aaa',1);
+INSERT INTO `item` VALUES (1,'Cimento','Saco de cimento CP2 40kg',1),(2,'Pedreiro','Pedreiro',3),(3,'Tijolo Baiano','Milheiro',1),(4,'Pedra ','Brita Fina',1),(5,'Areia','Areia',1),(6,'Ferragem','Ferragem',1),(7,'Terra','Terra',1),(8,'Prego','Prego',1),(9,'Cano','Cano',1),(10,'Fio','Fio',1),(11,'Revestimento','Revestimento cozinha',1),(12,'Piso','Piso',1),(13,'dfas','sdf',4),(14,'dfas','sdf',4),(15,'dsrfasg','sadgsdg',4),(16,'cri','cri',4),(17,'fff','ffff',4),(18,'aaaa','aaa',4),(19,'Metais','Metais',1),(20,'dfdsgas','dsgsag',5),(21,'fgasdg','5',5),(22,'sdagsdg','5',5);
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,7 +253,7 @@ CREATE TABLE `store` (
   PRIMARY KEY (`id`,`name`),
   KEY `fk_city_idx` (`city_id`),
   CONSTRAINT `pk_city` FOREIGN KEY (`city_id`) REFERENCES `city` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -261,7 +262,7 @@ CREATE TABLE `store` (
 
 LOCK TABLES `store` WRITE;
 /*!40000 ALTER TABLE `store` DISABLE KEYS */;
-INSERT INTO `store` VALUES (1,'Casa do Construtor',1),(2,'Bloquel',1),(4,'ABC',1),(5,'Uveda',1),(3,'ABC',2);
+INSERT INTO `store` VALUES (1,'Casa do Construtor',1),(2,'Bloquel',1),(4,'ABC',1),(5,'Uveda',1),(6,'Requinte',1),(3,'ABC',2);
 /*!40000 ALTER TABLE `store` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -302,4 +303,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-06 13:34:12
+-- Dump completed on 2017-04-19 21:08:15

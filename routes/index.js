@@ -402,6 +402,15 @@ router.get('/api/entryByItem/:id', entry.getEntriesByItem);
 router.get('/api/entryByMonth/:month', entry.getEntriesByMonth);
 
 /**
+ * @api {get} /entryByItemAndCity/:id/:store_id getEntryByItemAndCity
+ * @apiName getEntryByItemAndCity
+ * @apiGroup Entry
+ * @apiParam {Number} id Item unique ID.
+ * @apiParam {Number} id Store unique ID.
+ */
+router.get('/api/entryByItemAndCity/:id/:city_id', entry.getEntriesByItemAndCity);
+
+/**
  * @api {post} /entry postEntry
  * @apiName postEntry
  * @apiGroup Entry
