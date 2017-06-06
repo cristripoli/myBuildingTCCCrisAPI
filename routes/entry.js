@@ -102,6 +102,30 @@ getEntriesByCategory: function(req, res) {
     });
   },
 
+getEntriesByStore: function(req, res) {
+    var query = 'SELECT * ' +
+                'FROM store ' +
+                'INNER JOIN entry ' +
+                    'ON store.id = entry.store_id ' +
+                        'AND store.id = ';
+
+    connection.query(query + req.params.storeId, function(err, rows, fields) {
+        if (!err) {
+            if (rows.length > 0) {
+                console.log('GET entries by store ID OK');           
+                res.json(rows);
+            }
+            else{
+                console.log('This entry does not exists!');
+                res.status(404).send('This entry does not exists!');
+            }
+        }else{
+            console.log(err);
+            res.status(404).send('Not found!');
+        }
+    });
+  },
+
 getEntriesByItemAndCity: function(req, res) {
     var query = 'SELECT * ' +
                 'FROM item ' +
